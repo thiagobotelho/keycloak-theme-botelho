@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1 — 2026-07-10
+
+- Reduz o espaçamento entre logotipo e cartão no login.
+- Destaca a linha superior do cartão sem interferir no título.
+- Centraliza o seletor de tema quando o seletor de idioma não está disponível.
+- Aplica fundo e contraste próprios também no modo claro.
+- Permite gerar o JAR com `zip/unzip` quando o comando `jar` não está
+  disponível no ambiente local.
+- Permite validação parcial sem `node`, mantendo validações de JSON, Bash e
+  presença de recursos obrigatórios.
+
 ## 1.2.0 — 2026-07-10
 
 - Corrige sobreposição do nome do realm sobre o logotipo no login.

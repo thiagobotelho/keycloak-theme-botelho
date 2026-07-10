@@ -1,9 +1,13 @@
-# Botelho Identity Theme 1.2.0 — RHBK 26.6
+# Botelho Identity Theme 1.2.1 — RHBK 26.6
 
 Tema corporativo dark-first para **Red Hat build of Keycloak 26.6**, cobrindo Login e Admin Console sem substituir a aplicação React nativa nem os fluxos de autenticação do produto.
 
-## Correções da versão 1.2.0
+## Correções da versão 1.2.1
 
+- Ajusta o espaçamento entre logotipo, cartão e título no Login.
+- Centraliza o seletor de tema quando não há seletor de idioma renderizado.
+- Melhora o modo claro com fundo, contraste e copyright próprios.
+- Permite build local com `zip/unzip` quando `jar` não está instalado.
 - Corrige a sobreposição do nome do realm sobre o logotipo no Login.
 - Substitui os campos com aparência de linha inferior por controles completos, com borda, ícones, foco e contraste.
 - Move idioma e preferência visual para uma área organizada dentro do cartão.
@@ -42,10 +46,13 @@ Este tema altera a identidade visual. Ele não cria gráficos, KPIs ou novas pá
 ./scripts/build.sh
 ```
 
+O build usa `jar` quando disponível. Em estações sem JDK, usa `zip/unzip` para
+gerar o mesmo archive `.jar`, suficiente para distribuição de tema Keycloak.
+
 Artefato gerado:
 
 ```text
-target/rhbk-theme-botelho-1.2.0.jar
+target/rhbk-theme-botelho-1.2.1.jar
 ```
 
 Também é possível usar:
@@ -57,7 +64,7 @@ mvn clean package
 ## Deploy direto
 
 ```bash
-cp target/rhbk-theme-botelho-1.2.0.jar \
+cp target/rhbk-theme-botelho-1.2.1.jar \
   /opt/keycloak/providers/rhbk-theme-botelho.jar
 
 rm -rf /opt/keycloak/data/tmp/kc-gzip-cache
@@ -91,7 +98,7 @@ A estratégia recomendada é gerar uma imagem imutável com o JAR incorporado:
 podman build \
   --build-arg RHBK_IMAGE=<imagem-rhbk-26.6-homologada> \
   -f deploy/Containerfile.example \
-  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.0 .
+  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.1 .
 ```
 
 Arquivos de apoio:
@@ -116,8 +123,8 @@ Arquivos de apoio:
 
 ## Personalização
 
-- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.0.css`
-- Admin: `src/main/resources/theme/botelho/admin/resources/css/admin-1.2.0.css`
+- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.1.css`
+- Admin: `src/main/resources/theme/botelho/admin/resources/css/admin-1.2.1.css`
 - Logo: `src/main/resources/theme/botelho/*/resources/img/botelho-identity-logo.svg`
 - Fundo: `src/main/resources/theme/botelho/login/resources/img/identity-wave.svg`
 - Textos: `src/main/resources/theme/botelho/login/messages/`

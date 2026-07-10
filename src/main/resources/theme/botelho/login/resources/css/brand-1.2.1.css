@@ -1,5 +1,5 @@
 /*
- * Botelho Identity — Login Theme 1.2.0
+ * Botelho Identity — Login Theme 1.2.1
  * Target: Red Hat build of Keycloak 26.6 / keycloak.v2.
  * Premium dark-first visual layer while preserving native RHBK templates and flows.
  */
@@ -91,12 +91,12 @@ html.login-pf,
 .pf-v5-c-login__container {
   display: grid;
   grid-template-areas: "header" "main";
-  grid-template-columns: minmax(0, 27rem);
+  grid-template-columns: minmax(0, 27.5rem);
   align-content: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 2.1rem 1rem 6.2rem;
-  row-gap: 1.15rem;
+  padding: 1.9rem 1rem 6.6rem;
+  row-gap: 0.8rem;
 }
 
 #kc-header {
@@ -107,8 +107,8 @@ html.login-pf,
 /* Hide realm title completely and render only the branded SVG. */
 #kc-header-wrapper {
   display: block;
-  width: min(19rem, 80vw);
-  height: 5rem;
+  width: min(18rem, 80vw);
+  height: 4.35rem;
   margin: 0 auto;
   overflow: hidden;
   background-image: url('../img/botelho-identity-logo.svg');
@@ -143,16 +143,17 @@ html.login-pf,
 .pf-v5-c-login__main::before {
   position: absolute;
   top: 0;
-  right: 1.25rem;
-  left: 1.25rem;
-  height: 1px;
+  right: 1.75rem;
+  left: 1.75rem;
+  height: 3px;
   content: "";
+  border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(67, 197, 255, 0.88), transparent);
 }
 
 .pf-v5-c-login__main-header {
   display: block !important;
-  padding: 2rem 2rem 1.15rem !important;
+  padding: 2.25rem 2rem 1.15rem !important;
   text-align: center;
 }
 
@@ -465,6 +466,11 @@ button:focus-visible {
   gap: 0.75rem;
 }
 
+.botelho-login-controls--single {
+  grid-template-columns: minmax(0, 12.5rem);
+  justify-content: center;
+}
+
 .botelho-login-copyright {
   position: absolute;
   top: calc(100% + 1.35rem);
@@ -568,6 +574,30 @@ html[data-botelho-resolved-theme="light"] .pf-v5-c-login__main {
   background: rgba(255, 255, 255, 0.985) !important;
 }
 
+html[data-botelho-resolved-theme="light"] .login-pf body {
+  background-color: #edf4fb;
+  background-image:
+    radial-gradient(circle at 50% -18%, rgba(22, 132, 255, 0.24), transparent 42rem),
+    radial-gradient(circle at 88% 54%, rgba(67, 197, 255, 0.16), transparent 32rem),
+    radial-gradient(circle at 5% 73%, rgba(22, 132, 255, 0.12), transparent 28rem),
+    linear-gradient(145deg, rgba(244, 249, 253, 0.97), rgba(224, 237, 248, 0.95)),
+    url('../img/identity-wave.svg');
+  color: var(--botelho-text);
+}
+
+html[data-botelho-resolved-theme="light"] .login-pf body::before {
+  opacity: 0.16;
+  background-image: radial-gradient(circle, rgba(22, 132, 255, 0.58) 1px, transparent 1.35px);
+}
+
+html[data-botelho-resolved-theme="light"] .login-pf body::after {
+  background: rgba(22, 132, 255, 0.10);
+}
+
+html[data-botelho-resolved-theme="light"] #kc-header-wrapper {
+  filter: drop-shadow(0 10px 22px rgba(22, 50, 83, 0.24));
+}
+
 html[data-botelho-resolved-theme="light"] #kc-social-providers h2 {
   background: #fff;
 }
@@ -575,6 +605,10 @@ html[data-botelho-resolved-theme="light"] #kc-social-providers h2 {
 html[data-botelho-resolved-theme="light"] .botelho-locale-control,
 html[data-botelho-resolved-theme="light"] .botelho-theme-control {
   background: #f7f9fc !important;
+}
+
+html[data-botelho-resolved-theme="light"] .botelho-login-copyright {
+  color: rgba(30, 48, 68, 0.72);
 }
 
 html[data-botelho-resolved-theme="light"] .botelho-locale-control select option,

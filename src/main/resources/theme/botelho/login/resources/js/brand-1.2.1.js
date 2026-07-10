@@ -117,6 +117,10 @@
 
     moveLocaleControl(controls);
     createThemeControl(controls);
+
+    if (controls.children.length === 1) {
+      controls.classList.add("botelho-login-controls--single");
+    }
   }
 
   if (document.readyState === "loading") {
