@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0878df" stop-opacity="0"/>
+      <stop offset=".42" stop-color="#1597ff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#35c2ff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#27a9ff" opacity=".62"/>
+    </pattern>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <path d="M-80 760 C 260 590, 430 920, 770 745 S 1320 555, 2020 730 L2020 1100H-80z" fill="url(#dots)" opacity=".48"/>
+  <path d="M-120 790 C 250 600, 430 930, 790 735 S 1370 530, 2040 710" fill="none" stroke="url(#line)" stroke-width="3" filter="url(#glow)"/>
+  <path d="M-100 835 C 260 650, 465 965, 820 780 S 1420 585, 2030 755" fill="none" stroke="url(#line)" stroke-width="1.5" opacity=".72"/>
+  <path d="M-90 700 C 250 545, 460 835, 790 690 S 1370 500, 2030 665" fill="none" stroke="url(#line)" stroke-width="1.2" opacity=".55"/>
+</svg>

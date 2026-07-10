@@ -1,0 +1,428 @@
+/*
+ * Botelho Identity — Admin Console Theme 1.2.0
+ * Target: Red Hat build of Keycloak 26.6 / keycloak.v2 Admin Console.
+ * Native React application, RBAC and workflows are preserved.
+ */
+
+:root {
+  --botelho-primary: #1684ff;
+  --botelho-primary-hover: #0874e8;
+  --botelho-accent: #43c5ff;
+  --botelho-navy-975: #020d1b;
+  --botelho-navy-950: #041326;
+  --botelho-navy-925: #061a31;
+  --botelho-navy-900: #08213a;
+  --botelho-navy-850: #0b2946;
+  --botelho-surface: #0b2037;
+  --botelho-surface-2: #102943;
+  --botelho-surface-3: #153451;
+  --botelho-page: #06182b;
+  --botelho-border: rgba(125, 168, 207, 0.23);
+  --botelho-border-strong: rgba(125, 178, 226, 0.34);
+  --botelho-text: #edf5fc;
+  --botelho-muted: #aebed0;
+  --botelho-shadow: 0 12px 34px rgba(0, 6, 17, 0.26);
+
+  --pf-v5-global--primary-color--100: var(--botelho-primary);
+  --pf-v5-global--primary-color--200: var(--botelho-primary-hover);
+  --pf-v5-global--link--Color: #55a7ff;
+  --pf-v5-global--link--Color--hover: #82c0ff;
+  --pf-v5-global--BorderRadius--sm: 9px;
+}
+
+body[data-page-id="admin"] {
+  font-family: RedHatText, "Red Hat Text", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Masthead */
+body[data-page-id="admin"] .pf-v5-c-masthead {
+  --pf-v5-c-masthead--BackgroundColor: var(--botelho-navy-950);
+  min-height: 4.35rem;
+  border-bottom: 1px solid rgba(72, 155, 230, 0.21) !important;
+  background:
+    radial-gradient(circle at 18% -170%, rgba(67, 197, 255, 0.30), transparent 23rem),
+    linear-gradient(105deg, #031326 0%, #061a31 58%, #08233e 100%) !important;
+  box-shadow: 0 5px 22px rgba(0, 8, 22, 0.32) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-masthead,
+body[data-page-id="admin"] .pf-v5-c-masthead a,
+body[data-page-id="admin"] .pf-v5-c-masthead button,
+body[data-page-id="admin"] .pf-v5-c-masthead .pf-v5-c-dropdown__toggle-text,
+body[data-page-id="admin"] .pf-v5-c-masthead .pf-v5-c-menu-toggle__text {
+  color: #f4f9fe !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-masthead__brand,
+body[data-page-id="admin"] .pf-v5-c-masthead__main {
+  min-width: 13.75rem;
+}
+
+body[data-page-id="admin"] .keycloak__pageheader_brand {
+  width: 10.75rem !important;
+  min-width: 10.75rem !important;
+  max-width: none !important;
+  height: 2.85rem !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
+body[data-page-id="admin"] .pf-v5-c-masthead .pf-v5-c-button.pf-m-plain:hover,
+body[data-page-id="admin"] .pf-v5-c-masthead .pf-v5-c-menu-toggle:hover,
+body[data-page-id="admin"] .pf-v5-c-masthead .pf-v5-c-dropdown__toggle:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Navigation */
+body[data-page-id="admin"] .pf-v5-c-page__sidebar {
+  --pf-v5-c-page__sidebar--BackgroundColor: var(--botelho-navy-950);
+  border-right: 1px solid var(--botelho-border) !important;
+  background:
+    linear-gradient(180deg, rgba(7, 28, 49, 0.99), rgba(4, 19, 36, 0.99)) !important;
+  box-shadow: 4px 0 18px rgba(0, 8, 22, 0.18) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav {
+  --pf-v5-c-nav__link--Color: #c8d6e6;
+  --pf-v5-c-nav__link--hover--Color: #ffffff;
+  background: transparent !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav__section-title,
+body[data-page-id="admin"] .pf-v5-c-nav__section-title > span {
+  color: #8599ad !important;
+  font-weight: 500;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav__link {
+  margin: 0.12rem 0.6rem;
+  border-radius: 8px !important;
+  color: #c8d6e6 !important;
+  transition: color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav__link:hover {
+  background: rgba(36, 133, 237, 0.10) !important;
+  color: #ffffff !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav__link.pf-m-current,
+body[data-page-id="admin"] .pf-v5-c-nav__link[aria-current="page"] {
+  background: linear-gradient(90deg, rgba(15, 119, 237, 0.82), rgba(11, 87, 190, 0.56)) !important;
+  box-shadow: inset 3px 0 0 var(--botelho-accent), 0 6px 16px rgba(0, 91, 205, 0.16) !important;
+  color: #ffffff !important;
+  font-weight: 650;
+}
+
+body[data-page-id="admin"] .pf-v5-c-nav__link.pf-m-current::after,
+body[data-page-id="admin"] .pf-v5-c-nav__link[aria-current="page"]::after {
+  border-left-color: transparent !important;
+}
+
+/* Main workspace */
+body[data-page-id="admin"],
+body[data-page-id="admin"] #app,
+body[data-page-id="admin"] .pf-v5-c-page,
+body[data-page-id="admin"] .pf-v5-c-page__main {
+  background: var(--botelho-page) !important;
+  color: var(--botelho-text) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-page__main {
+  background:
+    radial-gradient(circle at 88% 5%, rgba(22, 132, 255, 0.11), transparent 31rem),
+    radial-gradient(circle at 30% 100%, rgba(67, 197, 255, 0.05), transparent 34rem),
+    linear-gradient(145deg, #06182b 0%, #082038 58%, #071a2e 100%) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-page__main-section,
+body[data-page-id="admin"] .pf-v5-c-page__main-section.pf-m-light,
+body[data-page-id="admin"] .pf-v5-c-page__main-section.pf-m-light-100,
+body[data-page-id="admin"] .pf-v5-c-page__main-section.pf-m-light-200,
+body[data-page-id="admin"] .pf-v5-c-page__main-section.pf-m-dark-100,
+body[data-page-id="admin"] .pf-v5-c-page__main-section.pf-m-dark-200 {
+  background: transparent !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-title,
+body[data-page-id="admin"] h1,
+body[data-page-id="admin"] h2,
+body[data-page-id="admin"] h3,
+body[data-page-id="admin"] h4 {
+  color: var(--botelho-text) !important;
+  font-family: RedHatDisplay, "Red Hat Display", Inter, system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+body[data-page-id="admin"] .pf-v5-c-content,
+body[data-page-id="admin"] p,
+body[data-page-id="admin"] label,
+body[data-page-id="admin"] .pf-v5-c-form__label-text,
+body[data-page-id="admin"] .pf-v5-c-description-list__text,
+body[data-page-id="admin"] .pf-v5-c-helper-text__item-text {
+  color: var(--botelho-muted);
+}
+
+body[data-page-id="admin"] .pf-v5-c-breadcrumb__link,
+body[data-page-id="admin"] .pf-v5-c-tabs__link,
+body[data-page-id="admin"] a:not(.pf-v5-c-button) {
+  color: #55a7ff;
+}
+
+/* Cards, tables and work surfaces */
+body[data-page-id="admin"] .pf-v5-c-card,
+body[data-page-id="admin"] .pf-v5-c-modal-box,
+body[data-page-id="admin"] .pf-v5-c-drawer__panel,
+body[data-page-id="admin"] .pf-v5-c-popover__content,
+body[data-page-id="admin"] .pf-v5-c-menu,
+body[data-page-id="admin"] .pf-v5-c-data-list,
+body[data-page-id="admin"] .pf-v5-c-table,
+body[data-page-id="admin"] .pf-v5-c-panel,
+body[data-page-id="admin"] .pf-v5-c-wizard,
+body[data-page-id="admin"] .pf-v5-c-form-control,
+body[data-page-id="admin"] .pf-v5-c-menu-toggle {
+  color: var(--botelho-text);
+}
+
+body[data-page-id="admin"] .pf-v5-c-card,
+body[data-page-id="admin"] .pf-v5-c-modal-box,
+body[data-page-id="admin"] .pf-v5-c-drawer__panel,
+body[data-page-id="admin"] .pf-v5-c-popover__content,
+body[data-page-id="admin"] .pf-v5-c-menu,
+body[data-page-id="admin"] .pf-v5-c-data-list,
+body[data-page-id="admin"] .pf-v5-c-panel,
+body[data-page-id="admin"] .pf-v5-c-wizard {
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 11px !important;
+  background: linear-gradient(160deg, rgba(15, 40, 66, 0.97), rgba(9, 29, 50, 0.98)) !important;
+  box-shadow: var(--botelho-shadow) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-card__title {
+  font-family: RedHatDisplay, "Red Hat Display", Inter, system-ui, sans-serif;
+  font-weight: 650;
+}
+
+body[data-page-id="admin"] .pf-v5-c-toolbar {
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 10px !important;
+  background: rgba(11, 32, 55, 0.82) !important;
+  box-shadow: 0 8px 24px rgba(0, 7, 19, 0.14);
+}
+
+body[data-page-id="admin"] .pf-v5-c-table {
+  overflow: hidden;
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 10px !important;
+  background: rgba(8, 28, 48, 0.91) !important;
+  box-shadow: 0 12px 30px rgba(0, 6, 17, 0.16) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-table thead,
+body[data-page-id="admin"] .pf-v5-c-table tr,
+body[data-page-id="admin"] .pf-v5-c-table td,
+body[data-page-id="admin"] .pf-v5-c-table th {
+  border-color: var(--botelho-border) !important;
+  background-color: transparent !important;
+  color: #dfeaf5 !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-table thead {
+  background: rgba(14, 43, 72, 0.78) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-table tbody tr:hover,
+body[data-page-id="admin"] .pf-v5-c-data-list__item:hover {
+  background: rgba(31, 126, 232, 0.08) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-pagination {
+  color: var(--botelho-muted) !important;
+}
+
+/* Controls */
+body[data-page-id="admin"] .pf-v5-c-button,
+body[data-page-id="admin"] .pf-v5-c-menu-toggle,
+body[data-page-id="admin"] .pf-v5-c-form-control,
+body[data-page-id="admin"] .pf-v5-c-select__toggle,
+body[data-page-id="admin"] .pf-v5-c-dropdown__toggle,
+body[data-page-id="admin"] .pf-v5-c-pagination__nav-page-select,
+body[data-page-id="admin"] input,
+body[data-page-id="admin"] textarea,
+body[data-page-id="admin"] select {
+  border-radius: 8px !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-form-control,
+body[data-page-id="admin"] .pf-v5-c-menu-toggle,
+body[data-page-id="admin"] .pf-v5-c-select__toggle,
+body[data-page-id="admin"] .pf-v5-c-dropdown__toggle,
+body[data-page-id="admin"] input,
+body[data-page-id="admin"] textarea,
+body[data-page-id="admin"] select {
+  border-color: var(--botelho-border-strong) !important;
+  background-color: rgba(19, 47, 75, 0.94) !important;
+  background-image: none !important;
+  color: var(--botelho-text) !important;
+  box-shadow: none !important;
+}
+
+body[data-page-id="admin"] input::placeholder,
+body[data-page-id="admin"] textarea::placeholder {
+  color: #8296aa !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-button {
+  font-weight: 600;
+}
+
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-primary {
+  border-color: #208cff !important;
+  background: linear-gradient(180deg, #208cff 0%, #086ee2 100%) !important;
+  box-shadow: 0 7px 16px rgba(0, 105, 224, 0.25) !important;
+  color: #fff !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-primary:hover {
+  border-color: #3e9bff !important;
+  background: linear-gradient(180deg, #2993ff 0%, #0878ef 100%) !important;
+  box-shadow: 0 10px 22px rgba(0, 105, 224, 0.34) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-secondary,
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-tertiary {
+  border-color: var(--botelho-border-strong) !important;
+  background: rgba(19, 47, 75, 0.72) !important;
+  color: #dfeaf5 !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-secondary:hover,
+body[data-page-id="admin"] .pf-v5-c-button.pf-m-tertiary:hover {
+  background: rgba(27, 65, 101, 0.84) !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-form-control:focus-within,
+body[data-page-id="admin"] .pf-v5-c-menu-toggle:focus-visible,
+body[data-page-id="admin"] .pf-v5-c-button:focus-visible,
+body[data-page-id="admin"] a:focus-visible,
+body[data-page-id="admin"] input:focus-visible,
+body[data-page-id="admin"] select:focus-visible {
+  outline: 3px solid rgba(67, 197, 255, 0.55) !important;
+  outline-offset: 2px;
+}
+
+body[data-page-id="admin"] .pf-v5-c-label {
+  border-radius: 999px !important;
+}
+
+body[data-page-id="admin"] .pf-v5-c-tabs__link::after {
+  border-bottom-color: var(--botelho-primary) !important;
+}
+
+/* Loading state */
+body[data-page-id="admin"] .keycloak__loading-container {
+  background:
+    radial-gradient(circle at 30% 18%, rgba(67, 197, 255, 0.12), transparent 28rem),
+    linear-gradient(135deg, #041326, #0b2037) !important;
+  color: #eef6fc !important;
+}
+
+body[data-page-id="admin"] #loading-text {
+  color: #eef6fc !important;
+}
+
+/* Light mode still receives consistent branding when enabled at realm level. */
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] {
+  --botelho-page: #eef3f8;
+  --botelho-surface: #ffffff;
+  --botelho-surface-2: #f8fafc;
+  --botelho-surface-3: #edf4fb;
+  --botelho-border: rgba(20, 48, 78, 0.13);
+  --botelho-border-strong: rgba(20, 70, 118, 0.22);
+  --botelho-text: #111d30;
+  --botelho-muted: #5f6e80;
+  --botelho-shadow: 0 8px 25px rgba(7, 26, 46, 0.08);
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-page__sidebar {
+  background: linear-gradient(180deg, #ffffff, #f7faff) !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-nav {
+  --pf-v5-c-nav__link--Color: #263b52;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-nav__link {
+  color: #263b52 !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-page__main {
+  background:
+    radial-gradient(circle at 88% 5%, rgba(22, 132, 255, 0.08), transparent 28rem),
+    linear-gradient(145deg, #f7faff, #edf3f8) !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-card,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-modal-box,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-drawer__panel,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-popover__content,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-menu,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-data-list,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-panel,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-wizard,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-toolbar,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table {
+  background: rgba(255, 255, 255, 0.97) !important;
+  color: var(--botelho-text) !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table thead,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table tr,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table td,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table th {
+  color: #24374d !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-table thead {
+  background: #f4f8fc !important;
+}
+
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-form-control,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-menu-toggle,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-select__toggle,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] .pf-v5-c-dropdown__toggle,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] input,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] textarea,
+html:not(.pf-v5-theme-dark) body[data-page-id="admin"] select {
+  background-color: #ffffff !important;
+  color: #111d30 !important;
+}
+
+@media (max-width: 767px) {
+  body[data-page-id="admin"] .pf-v5-c-masthead__brand,
+  body[data-page-id="admin"] .pf-v5-c-masthead__main {
+    min-width: auto;
+  }
+
+  body[data-page-id="admin"] .keycloak__pageheader_brand {
+    width: 8.5rem !important;
+    min-width: 8.5rem !important;
+    height: 2.35rem !important;
+  }
+
+  body[data-page-id="admin"] .pf-v5-c-page__main-section {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

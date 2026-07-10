@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Botelho Identity">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4ac8ff"/><stop offset="1" stop-color="#0b63ce"/></linearGradient></defs>
+  <path d="M32 3 57 17v30L32 61 7 47V17z" fill="#071a2e" stroke="url(#g)" stroke-width="4"/>
+  <path d="M20 16h15c9 0 14 4 14 11 0 5-3 8-7 10 6 1 9 5 9 11 0 8-6 13-17 13H20V16zm13 17c5 0 8-2 8-6s-3-6-8-6h-4v12h4zm1 22c6 0 9-2 9-7s-3-7-9-7h-5v14h5z" transform="translate(-4 -6) scale(.9)" fill="#fff"/>
+</svg>

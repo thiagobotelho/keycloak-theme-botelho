@@ -1,0 +1,634 @@
+/*
+ * Botelho Identity — Login Theme 1.2.0
+ * Target: Red Hat build of Keycloak 26.6 / keycloak.v2.
+ * Premium dark-first visual layer while preserving native RHBK templates and flows.
+ */
+
+:root {
+  --botelho-primary: #1684ff;
+  --botelho-primary-hover: #0874e8;
+  --botelho-primary-active: #0663c7;
+  --botelho-accent: #43c5ff;
+  --botelho-bg-950: #020d1b;
+  --botelho-bg-900: #06172a;
+  --botelho-bg-850: #09213a;
+  --botelho-card: rgba(12, 29, 48, 0.965);
+  --botelho-card-soft: #10243a;
+  --botelho-card-hover: #142b44;
+  --botelho-border: #35506c;
+  --botelho-border-soft: rgba(120, 157, 194, 0.24);
+  --botelho-text: #f4f8fc;
+  --botelho-muted: #aebccc;
+  --botelho-placeholder: #8191a4;
+  --botelho-focus: rgba(67, 197, 255, 0.58);
+  --botelho-shadow: 0 30px 90px rgba(0, 7, 20, 0.58);
+
+  --pf-v5-global--primary-color--100: var(--botelho-primary);
+  --pf-v5-global--primary-color--200: var(--botelho-primary-hover);
+  --pf-v5-global--link--Color: #55a7ff;
+  --pf-v5-global--link--Color--hover: #82c0ff;
+  --pf-v5-global--BorderRadius--sm: 10px;
+}
+
+html.login-pf,
+.login-pf body {
+  min-height: 100%;
+}
+
+.login-pf body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--botelho-bg-950);
+  background-image:
+    radial-gradient(circle at 50% -18%, rgba(22, 132, 255, 0.28), transparent 42rem),
+    radial-gradient(circle at 88% 54%, rgba(67, 197, 255, 0.10), transparent 32rem),
+    radial-gradient(circle at 5% 73%, rgba(22, 132, 255, 0.09), transparent 28rem),
+    linear-gradient(145deg, rgba(2, 13, 27, 0.97), rgba(5, 24, 45, 0.95)),
+    url('../img/identity-wave.svg');
+  background-repeat: no-repeat;
+  background-position: center, center, center, center, center bottom;
+  background-size: cover, cover, cover, cover, cover;
+  color: var(--botelho-text);
+  font-family: RedHatText, "Red Hat Text", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.login-pf body::before,
+.login-pf body::after {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.login-pf body::before {
+  inset: 0;
+  opacity: 0.22;
+  background-image: radial-gradient(circle, rgba(67, 197, 255, 0.82) 1px, transparent 1.35px);
+  background-position: center 58%;
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, transparent 12%, #000 55%, transparent 96%);
+}
+
+.login-pf body::after {
+  top: -20rem;
+  left: 50%;
+  width: 48rem;
+  height: 48rem;
+  border-radius: 50%;
+  background: rgba(18, 112, 220, 0.08);
+  filter: blur(2px);
+  transform: translateX(-50%);
+}
+
+.pf-v5-c-login {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background: transparent !important;
+}
+
+.pf-v5-c-login__container {
+  display: grid;
+  grid-template-areas: "header" "main";
+  grid-template-columns: minmax(0, 27rem);
+  align-content: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2.1rem 1rem 6.2rem;
+  row-gap: 1.15rem;
+}
+
+#kc-header {
+  grid-area: header;
+  padding: 0;
+}
+
+/* Hide realm title completely and render only the branded SVG. */
+#kc-header-wrapper {
+  display: block;
+  width: min(19rem, 80vw);
+  height: 5rem;
+  margin: 0 auto;
+  overflow: hidden;
+  background-image: url('../img/botelho-identity-logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  text-indent: -9999px;
+  white-space: nowrap;
+  text-shadow: none !important;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.34));
+}
+
+#kc-header-wrapper > * {
+  display: none !important;
+}
+
+.pf-v5-c-login__main {
+  position: relative;
+  grid-area: main;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid rgba(115, 151, 187, 0.38) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(155deg, rgba(16, 36, 58, 0.985), rgba(10, 25, 42, 0.985)) !important;
+  box-shadow: var(--botelho-shadow) !important;
+  backdrop-filter: blur(18px);
+}
+
+.pf-v5-c-login__main::before {
+  position: absolute;
+  top: 0;
+  right: 1.25rem;
+  left: 1.25rem;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(67, 197, 255, 0.88), transparent);
+}
+
+.pf-v5-c-login__main-header {
+  display: block !important;
+  padding: 2rem 2rem 1.15rem !important;
+  text-align: center;
+}
+
+.pf-v5-c-login__main-header-utilities[hidden] {
+  display: none !important;
+}
+
+#kc-page-title,
+.pf-v5-c-login__main .pf-v5-c-title {
+  margin: 0;
+  color: var(--botelho-text) !important;
+  font-family: RedHatDisplay, "Red Hat Display", Inter, system-ui, sans-serif;
+  font-size: clamp(1.65rem, 4vw, 1.95rem) !important;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+  text-align: center;
+}
+
+body[data-page-id="login-login"] #kc-page-title::after {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--botelho-muted);
+  font-family: RedHatText, "Red Hat Text", Inter, system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+}
+
+html[lang^="pt"] body[data-page-id="login-login"] #kc-page-title::after {
+  content: "Faça login para continuar.";
+}
+
+html[lang^="en"] body[data-page-id="login-login"] #kc-page-title::after {
+  content: "Sign in to continue.";
+}
+
+.pf-v5-c-login__main-body {
+  padding: 0 2rem 1.6rem !important;
+}
+
+.pf-v5-c-form__group {
+  margin-bottom: 1.15rem !important;
+}
+
+.pf-v5-c-form__label,
+.pf-v5-c-form__label-text,
+.pf-v5-c-check__label,
+#kc-form-options label {
+  color: var(--botelho-text) !important;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+/* Robust override for PatternFly input borders and background layers. */
+input.pf-v5-c-form-control,
+select.pf-v5-c-form-control,
+textarea.pf-v5-c-form-control,
+.pf-v5-c-login__main input[type="text"],
+.pf-v5-c-login__main input[type="email"],
+.pf-v5-c-login__main input[type="password"],
+.pf-v5-c-login__main input[type="tel"],
+.pf-v5-c-login__main input[type="number"] {
+  min-height: 3.05rem !important;
+  padding: 0.72rem 0.95rem !important;
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 10px !important;
+  outline: 0 !important;
+  background: var(--botelho-card-soft) !important;
+  background-image: none !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+  color: var(--botelho-text) !important;
+  caret-color: var(--botelho-accent);
+  appearance: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.pf-v5-c-login__main input::placeholder,
+.pf-v5-c-login__main textarea::placeholder {
+  color: var(--botelho-placeholder) !important;
+  opacity: 1;
+}
+
+#username {
+  padding-left: 2.75rem !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23aebccc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0.9rem center !important;
+}
+
+.pf-v5-c-input-group {
+  display: flex !important;
+  min-height: 3.05rem;
+  overflow: hidden;
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 10px !important;
+  background: var(--botelho-card-soft) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025) !important;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.pf-v5-c-input-group input.pf-v5-c-form-control,
+.pf-v5-c-input-group .pf-v5-c-form-control {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#password {
+  padding-left: 2.75rem !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23aebccc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='10' width='14' height='11' rx='2'/%3E%3Cpath d='M8 10V7a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0.9rem center !important;
+}
+
+.pf-v5-c-input-group > .pf-v5-c-button.pf-m-control,
+.pf-v5-c-input-group > button[data-password-toggle] {
+  flex: 0 0 3.15rem;
+  min-height: 3.05rem !important;
+  border: 0 !important;
+  border-left: 1px solid var(--botelho-border) !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  box-shadow: none !important;
+  color: #bdc9d7 !important;
+}
+
+.pf-v5-c-input-group > .pf-v5-c-button.pf-m-control:hover,
+.pf-v5-c-input-group > button[data-password-toggle]:hover {
+  background: rgba(255, 255, 255, 0.075) !important;
+  color: #fff !important;
+}
+
+input.pf-v5-c-form-control:hover,
+select.pf-v5-c-form-control:hover,
+textarea.pf-v5-c-form-control:hover,
+.pf-v5-c-input-group:hover {
+  border-color: #53708f !important;
+}
+
+input.pf-v5-c-form-control:focus,
+select.pf-v5-c-form-control:focus,
+textarea.pf-v5-c-form-control:focus,
+.pf-v5-c-input-group:focus-within {
+  border-color: var(--botelho-primary) !important;
+  box-shadow: 0 0 0 3px rgba(22, 132, 255, 0.17), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+#kc-form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: -0.25rem;
+  font-size: 0.82rem;
+}
+
+#kc-form-options > div:last-child {
+  margin-left: auto;
+  text-align: right;
+}
+
+#kc-form-options a,
+#kc-registration a,
+.pf-v5-c-login__main-footer-band a {
+  color: #55a7ff !important;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+#kc-form-options a:hover,
+#kc-registration a:hover,
+.pf-v5-c-login__main-footer-band a:hover {
+  color: #82c0ff !important;
+  text-decoration: underline;
+}
+
+.pf-v5-c-button,
+input.pf-v5-c-button {
+  min-height: 3rem;
+  border-radius: 10px !important;
+  font-weight: 650;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+
+.pf-v5-c-button.pf-m-primary,
+input.pf-v5-c-button.pf-m-primary {
+  border: 1px solid #208cff !important;
+  background: linear-gradient(180deg, #208cff 0%, #086ee2 100%) !important;
+  box-shadow: 0 9px 22px rgba(0, 105, 224, 0.30) !important;
+  color: #fff !important;
+}
+
+.pf-v5-c-button.pf-m-primary:hover,
+input.pf-v5-c-button.pf-m-primary:hover {
+  border-color: #3e9bff !important;
+  background: linear-gradient(180deg, #2993ff 0%, #0878ef 100%) !important;
+  box-shadow: 0 12px 26px rgba(0, 105, 224, 0.38) !important;
+  transform: translateY(-1px);
+}
+
+.pf-v5-c-button:active,
+input.pf-v5-c-button:active {
+  transform: translateY(0);
+}
+
+.pf-v5-c-button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--botelho-focus) !important;
+  outline-offset: 2px;
+}
+
+.pf-v5-c-alert {
+  border-radius: 10px !important;
+}
+
+#kc-social-providers {
+  margin-top: 1.15rem;
+}
+
+#kc-social-providers hr {
+  margin: 0.7rem 0 -0.78rem;
+  border-color: var(--botelho-border-soft);
+}
+
+#kc-social-providers h2 {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 0.95rem;
+  padding: 0 0.8rem;
+  background: #0d2035;
+  color: var(--botelho-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+#kc-social-providers ul,
+#kc-social-providers .pf-v5-l-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+#kc-social-providers li,
+#kc-social-providers .pf-v5-l-grid__item {
+  width: 100%;
+  padding: 0 !important;
+}
+
+#kc-social-providers .pf-v5-c-button {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
+  width: 100%;
+  border: 1px solid var(--botelho-border) !important;
+  background: var(--botelho-card-soft) !important;
+  box-shadow: none !important;
+  color: var(--botelho-text) !important;
+}
+
+#kc-social-providers .pf-v5-c-button:hover {
+  border-color: #567594 !important;
+  background: var(--botelho-card-hover) !important;
+  box-shadow: 0 7px 18px rgba(0, 8, 22, 0.18) !important;
+}
+
+#kc-social-providers .kc-social-icon-text,
+#kc-social-providers .pf-v5-u-m-auto {
+  grid-column: 2;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.pf-v5-c-login__main-footer-band {
+  margin-top: 0.2rem;
+  padding: 1rem 2rem 1.35rem !important;
+  border-top: 1px solid var(--botelho-border-soft) !important;
+  background: transparent !important;
+  color: var(--botelho-muted) !important;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.pf-v5-c-login__main-footer-band-item {
+  padding: 0;
+}
+
+/* Footer controls stay inside the card; copyright stays below the card. */
+.botelho-login-footer {
+  position: static;
+  padding: 1.05rem 2rem 1.2rem;
+  border-top: 1px solid var(--botelho-border-soft);
+  color: var(--botelho-muted);
+  font-size: 0.78rem;
+}
+
+.botelho-login-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.botelho-login-copyright {
+  position: absolute;
+  top: calc(100% + 1.35rem);
+  left: 50%;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  margin: 0;
+  color: rgba(221, 234, 247, 0.72);
+  white-space: nowrap;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.botelho-locale-control,
+.botelho-theme-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--botelho-border) !important;
+  border-radius: 9px !important;
+  background: rgba(8, 25, 43, 0.55) !important;
+  color: var(--botelho-text);
+  box-shadow: none !important;
+}
+
+.botelho-locale-control::before {
+  content: "◉";
+  color: var(--botelho-accent);
+  font-size: 0.72rem;
+}
+
+.botelho-theme-control::before {
+  content: "◐";
+  color: var(--botelho-accent);
+  font-size: 0.9rem;
+}
+
+.botelho-control-label {
+  flex: 0 0 auto;
+  color: var(--botelho-muted);
+}
+
+.botelho-locale-control select,
+.botelho-theme-select {
+  width: 100%;
+  min-width: 0;
+  padding: 0.3rem 1.15rem 0.3rem 0.2rem;
+  border: 0 !important;
+  outline: 0;
+  background-color: transparent !important;
+  color: var(--botelho-text) !important;
+  font: inherit;
+  cursor: pointer;
+}
+
+.botelho-locale-control select option,
+.botelho-theme-select option {
+  background: #10243a;
+  color: #f4f8fc;
+}
+
+/* Authentication method selectors, OTP tiles, WebAuthn and required actions. */
+.pf-v5-c-tile,
+.pf-v5-c-data-list,
+.pf-v5-c-panel,
+.pf-v5-c-clipboard-copy {
+  border-radius: 10px !important;
+}
+
+.pf-v5-c-tile,
+.pf-v5-c-data-list,
+.pf-v5-c-panel {
+  border-color: var(--botelho-border) !important;
+  background: var(--botelho-card-soft) !important;
+  color: var(--botelho-text) !important;
+}
+
+.pf-v5-c-tile.pf-m-selected {
+  border-color: var(--botelho-primary) !important;
+  box-shadow: 0 0 0 3px rgba(22, 132, 255, 0.14) !important;
+}
+
+/* Optional light mode selected explicitly in the footer. */
+html[data-botelho-resolved-theme="light"] {
+  --botelho-card: rgba(255, 255, 255, 0.985);
+  --botelho-card-soft: #f8fafc;
+  --botelho-card-hover: #f1f6fb;
+  --botelho-border: #cdd8e4;
+  --botelho-border-soft: rgba(50, 78, 108, 0.14);
+  --botelho-text: #111d30;
+  --botelho-muted: #5e6d7f;
+  --botelho-placeholder: #8190a1;
+  --botelho-shadow: 0 30px 90px rgba(0, 8, 24, 0.44);
+}
+
+html[data-botelho-resolved-theme="light"] .pf-v5-c-login__main {
+  border-color: rgba(202, 214, 227, 0.96) !important;
+  background: rgba(255, 255, 255, 0.985) !important;
+}
+
+html[data-botelho-resolved-theme="light"] #kc-social-providers h2 {
+  background: #fff;
+}
+
+html[data-botelho-resolved-theme="light"] .botelho-locale-control,
+html[data-botelho-resolved-theme="light"] .botelho-theme-control {
+  background: #f7f9fc !important;
+}
+
+html[data-botelho-resolved-theme="light"] .botelho-locale-control select option,
+html[data-botelho-resolved-theme="light"] .botelho-theme-select option {
+  background: #fff;
+  color: #111d30;
+}
+
+@media (max-width: 480px) {
+  .pf-v5-c-login__container {
+    grid-template-columns: minmax(0, 23rem);
+    align-content: start;
+    padding: 1.4rem 0.85rem 7.4rem;
+  }
+
+  #kc-header-wrapper {
+    width: 15.5rem;
+    height: 4.35rem;
+  }
+
+  .pf-v5-c-login__main-header {
+    padding: 1.65rem 1.25rem 1rem !important;
+  }
+
+  .pf-v5-c-login__main-body {
+    padding: 0 1.25rem 1.3rem !important;
+  }
+
+  .pf-v5-c-login__main-footer-band {
+    padding-right: 1.25rem !important;
+    padding-left: 1.25rem !important;
+  }
+
+  .botelho-login-footer {
+    padding: 1rem 1.25rem 1.15rem;
+  }
+
+  .botelho-login-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .botelho-login-copyright {
+    width: calc(100vw - 2rem);
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

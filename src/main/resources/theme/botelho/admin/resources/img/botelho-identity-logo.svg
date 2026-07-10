@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 90" role="img" aria-labelledby="title desc">
+  <title id="title">Botelho Identity</title>
+  <desc id="desc">Botelho Identity corporate logo</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4ac8ff"/>
+      <stop offset="1" stop-color="#0b63ce"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(4 5)">
+    <path d="M40 0 75 20v40L40 80 5 60V20z" fill="none" stroke="url(#g)" stroke-width="6"/>
+    <path d="M40 10 66 25v30L40 70 14 55V25z" fill="#071a2e" opacity=".72"/>
+    <path d="M25 20h21c13 0 20 6 20 16 0 7-4 12-10 14 8 2 13 8 13 16 0 12-9 19-24 19H25V20zm18 24c7 0 11-3 11-8s-4-8-11-8h-6v16h6zm2 31c8 0 12-3 12-10s-4-10-12-10h-8v20h8z" transform="translate(-4 -8) scale(.86)" fill="#fff"/>
+  </g>
+  <text x="102" y="43" fill="#ffffff" font-family="Red Hat Display, Inter, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-.5">BOTELHO</text>
+  <text x="104" y="69" fill="#d7f3ff" font-family="Red Hat Text, Inter, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="4.2">IDENTITY</text>
+</svg>

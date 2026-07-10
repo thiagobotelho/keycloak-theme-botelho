@@ -1,0 +1,8 @@
+{
+  "themes": [
+    {
+      "name": "botelho",
+      "types": ["login", "admin"]
+    }
+  ]
+}
