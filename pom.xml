@@ -6,7 +6,7 @@
 
   <groupId>br.com.botelho.identity</groupId>
   <artifactId>rhbk-theme-botelho</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <packaging>jar</packaging>
 
   <name>Botelho Identity Theme for RHBK 26.6</name>

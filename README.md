@@ -1,20 +1,19 @@
-# Botelho Identity Theme 1.2.1 — RHBK 26.6
+# Botelho Identity Theme 1.2.2 — RHBK 26.6
 
 Tema corporativo dark-first para **Red Hat build of Keycloak 26.6**, cobrindo Login e Admin Console sem substituir a aplicação React nativa nem os fluxos de autenticação do produto.
 
-## Correções da versão 1.2.1
+## Correções da versão 1.2.2
 
-- Ajusta o espaçamento entre logotipo, cartão e título no Login.
-- Centraliza o seletor de tema quando não há seletor de idioma renderizado.
-- Melhora o modo claro com fundo, contraste e copyright próprios.
-- Permite build local com `zip/unzip` quando `jar` não está instalado.
-- Corrige a sobreposição do nome do realm sobre o logotipo no Login.
-- Substitui os campos com aparência de linha inferior por controles completos, com borda, ícones, foco e contraste.
-- Move idioma e preferência visual para uma área organizada dentro do cartão.
-- Redimensiona o logotipo do Admin Console.
-- Corrige o masthead preto e o workspace cinza padrão do modo escuro.
-- Padroniza sidebar, tabelas, cards, formulários, dropdowns e modais em azul-marinho corporativo.
-- Mantém modo claro disponível e usa o modo escuro como padrão visual do Login.
+- Remove a faixa azul decorativa no topo do cartão de login.
+- Melhora a apresentação das ações nativas do Keycloak:
+  recuperação de senha, cadastro quando habilitado, lembrar de mim e provedores
+  de identidade.
+- Mantém o tema limpo: o visual agrega experiência, mas as permissões e os
+  fluxos continuam controlados pelo realm.
+
+As correções anteriores da linha 1.2 permanecem: campos com borda completa,
+ícones, foco visível, contraste, seletor de tema, modo claro, Admin Console
+customizada e build local com `zip/unzip` quando `jar` não está disponível.
 
 ## Escopo
 
@@ -29,7 +28,14 @@ Tema corporativo dark-first para **Red Hat build of Keycloak 26.6**, cobrindo Lo
 
 ## Limite funcional
 
-Este tema altera a identidade visual. Ele não cria gráficos, KPIs ou novas páginas administrativas. Novas funcionalidades exigem uma Console própria ou aplicação integrada à Admin REST API.
+Este tema altera a identidade visual e melhora a experiência dos fluxos nativos.
+Ele não habilita sozinho recursos de realm. Para exibir e usar recursos como
+“Esqueceu sua senha?”, cadastro, lembrar de mim, verificação de e-mail, OTP ou
+Identity Providers, habilite esses recursos no realm do Keycloak.
+
+Ele também não cria gráficos, KPIs ou novas páginas administrativas. Novas
+funcionalidades exigem uma Console própria ou aplicação integrada à Admin REST
+API.
 
 ## Arquitetura
 
@@ -52,7 +58,7 @@ gerar o mesmo archive `.jar`, suficiente para distribuição de tema Keycloak.
 Artefato gerado:
 
 ```text
-target/rhbk-theme-botelho-1.2.1.jar
+target/rhbk-theme-botelho-1.2.2.jar
 ```
 
 Também é possível usar:
@@ -64,7 +70,7 @@ mvn clean package
 ## Deploy direto
 
 ```bash
-cp target/rhbk-theme-botelho-1.2.1.jar \
+cp target/rhbk-theme-botelho-1.2.2.jar \
   /opt/keycloak/providers/rhbk-theme-botelho.jar
 
 rm -rf /opt/keycloak/data/tmp/kc-gzip-cache
@@ -98,7 +104,7 @@ A estratégia recomendada é gerar uma imagem imutável com o JAR incorporado:
 podman build \
   --build-arg RHBK_IMAGE=<imagem-rhbk-26.6-homologada> \
   -f deploy/Containerfile.example \
-  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.1 .
+  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.2 .
 ```
 
 Arquivos de apoio:
@@ -121,10 +127,31 @@ Arquivos de apoio:
 - Admin Console no realm `master`.
 - Atualização entre patches da linha RHBK 26.6.
 
+## Recursos nativos que agregam valor
+
+O tema está pronto para apresentar os recursos abaixo quando eles estiverem
+habilitados no realm:
+
+- Recuperação de senha: `resetPasswordAllowed=true`.
+- Lembrar de mim: `rememberMe=true`.
+- Login com e-mail: `loginWithEmailAllowed=true`.
+- Cadastro self-service: `registrationAllowed=true`, quando fizer sentido para
+  o ambiente.
+- Verificação de e-mail: requer SMTP configurado e `verifyEmail=true`.
+- Provedores externos: Google, Microsoft, GitHub, LDAP/AD ou outro IdP
+  configurado no Keycloak.
+- MFA: OTP, WebAuthn/passkeys, recovery codes e required actions.
+
+Observação: se o login estiver no realm `master`, essas opções precisam existir
+também no `master`. O tema não força links ou ações que o Keycloak não renderiza
+por configuração de segurança.
+
+Manual detalhado: [docs/RECURSOS-DE-LOGIN.md](docs/RECURSOS-DE-LOGIN.md).
+
 ## Personalização
 
-- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.1.css`
-- Admin: `src/main/resources/theme/botelho/admin/resources/css/admin-1.2.1.css`
+- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.2.css`
+- Admin: `src/main/resources/theme/botelho/admin/resources/css/admin-1.2.2.css`
 - Logo: `src/main/resources/theme/botelho/*/resources/img/botelho-identity-logo.svg`
 - Fundo: `src/main/resources/theme/botelho/login/resources/img/identity-wave.svg`
 - Textos: `src/main/resources/theme/botelho/login/messages/`

@@ -121,6 +121,16 @@
     if (controls.children.length === 1) {
       controls.classList.add("botelho-login-controls--single");
     }
+
+    const recoveryLink = document.querySelector("#kc-form-options a[href*='reset-credentials']");
+    if (recoveryLink) {
+      document.body.classList.add("botelho-has-password-recovery");
+    }
+
+    const registrationLink = document.querySelector("#kc-registration a");
+    if (registrationLink) {
+      document.body.classList.add("botelho-has-registration");
+    }
   }
 
   if (document.readyState === "loading") {

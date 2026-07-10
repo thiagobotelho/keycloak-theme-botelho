@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.2 — 2026-07-10
+
+- Remove a faixa azul superior do cartão de login para reduzir ruído visual.
+- Destaca melhor o link nativo de recuperação de senha quando o realm permite
+  `resetPasswordAllowed`.
+- Melhora o bloco de cadastro self-service quando `registrationAllowed` estiver
+  habilitado.
+- Adiciona detecção leve via JavaScript para marcar páginas com recuperação de
+  senha/cadastro sem alterar os fluxos nativos do Keycloak.
+- Documenta quais recursos dependem de configuração do realm, como SMTP,
+  cadastro, lembrar de mim, IdPs e MFA.
+
 ## 1.2.1 — 2026-07-10
 
 - Reduz o espaçamento entre logotipo e cartão no login.
