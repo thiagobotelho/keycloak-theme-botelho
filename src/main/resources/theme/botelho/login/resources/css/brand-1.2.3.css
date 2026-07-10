@@ -1,5 +1,5 @@
 /*
- * Botelho Identity — Login Theme 1.2.2
+ * Botelho Identity — Login Theme 1.2.3
  * Target: Red Hat build of Keycloak 26.6 / keycloak.v2.
  * Premium dark-first visual layer while preserving native RHBK templates and flows.
  */
@@ -134,10 +134,28 @@ html.login-pf,
   width: 100%;
   overflow: visible;
   border: 1px solid rgba(115, 151, 187, 0.38) !important;
+  border-top-color: rgba(115, 151, 187, 0.38) !important;
   border-radius: 18px !important;
   background: linear-gradient(155deg, rgba(16, 36, 58, 0.985), rgba(10, 25, 42, 0.985)) !important;
   box-shadow: var(--botelho-shadow) !important;
   backdrop-filter: blur(18px);
+  --pf-v5-c-login__main--before--BackgroundColor: transparent;
+  --pf-v5-c-login__main--before--Height: 0;
+  --pf-v5-c-login__main--before--BorderTopWidth: 0;
+  --pf-v5-c-login__main--before--BorderTopColor: transparent;
+  --pf-v5-c-login__main--before--BorderRadius: 0;
+}
+
+/* Suppress the native PatternFly/Keycloak top accent bar. */
+.pf-v5-c-login__main::before,
+.pf-v5-c-login__main::after {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  content: none !important;
 }
 
 .pf-v5-c-login__main-header {

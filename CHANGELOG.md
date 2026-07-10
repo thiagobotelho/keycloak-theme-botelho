@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.3 — 2026-07-10
+
+- Remove explicitamente o pseudo-elemento nativo do PatternFly/Keycloak que
+  desenhava a faixa azul no topo do cartão de login.
+- Mantém o cartão apenas com a borda corporativa discreta.
+- Renomeia CSS/JS para `1.2.3` para evitar cache antigo no navegador e no
+  carregamento de recursos do tema.
+
 ## 1.2.2 — 2026-07-10
 
 - Remove a faixa azul superior do cartão de login para reduzir ruído visual.
