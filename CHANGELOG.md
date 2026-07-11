@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.4 — 2026-07-10
+
+- Remove a borda/faixa superior remanescente do cartão de login.
+- Renomeia CSS/JS para `1.2.4` para evitar cache antigo no navegador e no
+  carregamento de recursos do tema.
+
 ## 1.2.3 — 2026-07-10
 
 - Remove explicitamente o pseudo-elemento nativo do PatternFly/Keycloak que

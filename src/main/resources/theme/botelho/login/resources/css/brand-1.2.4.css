@@ -1,5 +1,5 @@
 /*
- * Botelho Identity — Login Theme 1.2.3
+ * Botelho Identity — Login Theme 1.2.4
  * Target: Red Hat build of Keycloak 26.6 / keycloak.v2.
  * Premium dark-first visual layer while preserving native RHBK templates and flows.
  */
@@ -128,13 +128,14 @@ html.login-pf,
   display: none !important;
 }
 
-.pf-v5-c-login__main {
+.pf-v5-c-login__main,
+.pf-c-login__main {
   position: relative;
   grid-area: main;
   width: 100%;
   overflow: visible;
   border: 1px solid rgba(115, 151, 187, 0.38) !important;
-  border-top-color: rgba(115, 151, 187, 0.38) !important;
+  border-top: 0 !important;
   border-radius: 18px !important;
   background: linear-gradient(155deg, rgba(16, 36, 58, 0.985), rgba(10, 25, 42, 0.985)) !important;
   box-shadow: var(--botelho-shadow) !important;
@@ -144,32 +145,63 @@ html.login-pf,
   --pf-v5-c-login__main--before--BorderTopWidth: 0;
   --pf-v5-c-login__main--before--BorderTopColor: transparent;
   --pf-v5-c-login__main--before--BorderRadius: 0;
+  --pf-c-login__main--before--BackgroundColor: transparent;
+  --pf-c-login__main--before--Height: 0;
+  --pf-c-login__main--before--BorderTopWidth: 0;
+  --pf-c-login__main--before--BorderTopColor: transparent;
+  --pf-c-login__main--before--BorderRadius: 0;
 }
 
 /* Suppress the native PatternFly/Keycloak top accent bar. */
 .pf-v5-c-login__main::before,
-.pf-v5-c-login__main::after {
+.pf-v5-c-login__main::after,
+.pf-v5-c-login__main-header::before,
+.pf-v5-c-login__main-header::after,
+.pf-c-login__main::before,
+.pf-c-login__main::after,
+.pf-c-login__main-header::before,
+.pf-c-login__main-header::after,
+#kc-content::before,
+#kc-content::after,
+#kc-content-wrapper::before,
+#kc-content-wrapper::after {
   display: none !important;
+  position: static !important;
+  inset: auto !important;
   width: 0 !important;
   height: 0 !important;
   border: 0 !important;
+  border-top: 0 !important;
   background: none !important;
   box-shadow: none !important;
   content: none !important;
 }
 
-.pf-v5-c-login__main-header {
+#kc-content,
+#kc-content-wrapper,
+.pf-v5-c-login__main-header,
+.pf-v5-c-login__main-body,
+.pf-c-login__main-header,
+.pf-c-login__main-body {
+  border-top: 0 !important;
+  box-shadow: none;
+}
+
+.pf-v5-c-login__main-header,
+.pf-c-login__main-header {
   display: block !important;
   padding: 2.25rem 2rem 1.15rem !important;
   text-align: center;
 }
 
-.pf-v5-c-login__main-header-utilities[hidden] {
+.pf-v5-c-login__main-header-utilities[hidden],
+.pf-c-login__main-header-utilities[hidden] {
   display: none !important;
 }
 
 #kc-page-title,
-.pf-v5-c-login__main .pf-v5-c-title {
+.pf-v5-c-login__main .pf-v5-c-title,
+.pf-c-login__main .pf-c-title {
   margin: 0;
   color: var(--botelho-text) !important;
   font-family: RedHatDisplay, "Red Hat Display", Inter, system-ui, sans-serif;
@@ -649,8 +681,10 @@ html[data-botelho-resolved-theme="light"] {
   --botelho-shadow: 0 30px 90px rgba(0, 8, 24, 0.44);
 }
 
-html[data-botelho-resolved-theme="light"] .pf-v5-c-login__main {
+html[data-botelho-resolved-theme="light"] .pf-v5-c-login__main,
+html[data-botelho-resolved-theme="light"] .pf-c-login__main {
   border-color: rgba(202, 214, 227, 0.96) !important;
+  border-top: 0 !important;
   background: rgba(255, 255, 255, 0.985) !important;
 }
 

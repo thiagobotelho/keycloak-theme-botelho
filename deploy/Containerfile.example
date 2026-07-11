@@ -1,7 +1,7 @@
 ARG RHBK_IMAGE
 FROM ${RHBK_IMAGE} AS builder
 
-COPY target/rhbk-theme-botelho-1.1.0.jar /opt/keycloak/providers/rhbk-theme-botelho.jar
+COPY target/rhbk-theme-botelho-1.2.4.jar /opt/keycloak/providers/rhbk-theme-botelho.jar
 
 # Build the optimized server image after adding providers/themes.
 RUN /opt/keycloak/bin/kc.sh build
