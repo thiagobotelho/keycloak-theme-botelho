@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.5 — 2026-07-11
+
+- Reforça a remoção da faixa superior do cartão de login com CSS específico e
+  override runtime após o carregamento do PatternFly.
+- Reduz o destaque azul em campos focados e harmoniza o botão de visibilidade
+  de senha com o restante do input.
+- Renomeia CSS/JS para `1.2.5` para evitar cache antigo no navegador.
+
 ## 1.2.4 — 2026-07-10
 
 - Remove a borda/faixa superior remanescente do cartão de login.

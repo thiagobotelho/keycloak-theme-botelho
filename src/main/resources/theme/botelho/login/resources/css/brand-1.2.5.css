@@ -1,5 +1,5 @@
 /*
- * Botelho Identity — Login Theme 1.2.4
+ * Botelho Identity — Login Theme 1.2.5
  * Target: Red Hat build of Keycloak 26.6 / keycloak.v2.
  * Premium dark-first visual layer while preserving native RHBK templates and flows.
  */
@@ -22,6 +22,7 @@
   --botelho-placeholder: #8191a4;
   --botelho-focus: rgba(67, 197, 255, 0.58);
   --botelho-shadow: 0 30px 90px rgba(0, 7, 20, 0.58);
+  --botelho-input-focus-border: #5d7895;
 
   --pf-v5-global--primary-color--100: var(--botelho-primary);
   --pf-v5-global--primary-color--200: var(--botelho-primary-hover);
@@ -136,6 +137,7 @@ html.login-pf,
   overflow: visible;
   border: 1px solid rgba(115, 151, 187, 0.38) !important;
   border-top: 0 !important;
+  border-top-color: transparent !important;
   border-radius: 18px !important;
   background: linear-gradient(155deg, rgba(16, 36, 58, 0.985), rgba(10, 25, 42, 0.985)) !important;
   box-shadow: var(--botelho-shadow) !important;
@@ -157,10 +159,14 @@ html.login-pf,
 .pf-v5-c-login__main::after,
 .pf-v5-c-login__main-header::before,
 .pf-v5-c-login__main-header::after,
+.pf-v5-c-login__main-body::before,
+.pf-v5-c-login__main-body::after,
 .pf-c-login__main::before,
 .pf-c-login__main::after,
 .pf-c-login__main-header::before,
 .pf-c-login__main-header::after,
+.pf-c-login__main-body::before,
+.pf-c-login__main-body::after,
 #kc-content::before,
 #kc-content::after,
 #kc-content-wrapper::before,
@@ -175,6 +181,20 @@ html.login-pf,
   background: none !important;
   box-shadow: none !important;
   content: none !important;
+}
+
+.pf-v5-c-login__main,
+.pf-c-login__main,
+.pf-v5-c-login__main *,
+.pf-c-login__main * {
+  --pf-v5-c-login__main--before--BackgroundColor: transparent !important;
+  --pf-v5-c-login__main--before--Height: 0 !important;
+  --pf-v5-c-form-control--after--BorderBottomColor: transparent !important;
+  --pf-v5-c-form-control--after--BorderBottomWidth: 0 !important;
+  --pf-v5-c-form-control--m-focus--after--BorderBottomColor: transparent !important;
+  --pf-v5-c-form-control--m-focus--after--BorderBottomWidth: 0 !important;
+  --pf-v5-c-input-group--BorderColor: var(--botelho-border) !important;
+  --pf-v5-c-input-group--m-focus--BorderColor: var(--botelho-input-focus-border) !important;
 }
 
 #kc-content,
@@ -252,6 +272,7 @@ html[lang^="en"] body[data-page-id="login-login"] #kc-page-title::after {
 input.pf-v5-c-form-control,
 select.pf-v5-c-form-control,
 textarea.pf-v5-c-form-control,
+.pf-c-form-control,
 .pf-v5-c-login__main input[type="text"],
 .pf-v5-c-login__main input[type="email"],
 .pf-v5-c-login__main input[type="password"],
@@ -269,6 +290,27 @@ textarea.pf-v5-c-form-control,
   caret-color: var(--botelho-accent);
   appearance: none;
   transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+input.pf-v5-c-form-control::before,
+input.pf-v5-c-form-control::after,
+select.pf-v5-c-form-control::before,
+select.pf-v5-c-form-control::after,
+textarea.pf-v5-c-form-control::before,
+textarea.pf-v5-c-form-control::after,
+.pf-v5-c-form-control::before,
+.pf-v5-c-form-control::after,
+.pf-c-form-control::before,
+.pf-c-form-control::after,
+.pf-v5-c-input-group::before,
+.pf-v5-c-input-group::after,
+.pf-v5-c-input-group__item::before,
+.pf-v5-c-input-group__item::after {
+  display: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  content: none !important;
 }
 
 .pf-v5-c-login__main input::placeholder,
@@ -317,16 +359,27 @@ textarea.pf-v5-c-form-control,
   flex: 0 0 3.15rem;
   min-height: 3.05rem !important;
   border: 0 !important;
-  border-left: 1px solid var(--botelho-border) !important;
-  border-radius: 0 !important;
-  background: rgba(255, 255, 255, 0.035) !important;
+  border-left: 1px solid rgba(115, 151, 187, 0.28) !important;
+  border-radius: 0 10px 10px 0 !important;
+  background: var(--botelho-card-soft) !important;
   box-shadow: none !important;
   color: #bdc9d7 !important;
 }
 
+.pf-v5-c-input-group > .pf-v5-c-button.pf-m-control::before,
+.pf-v5-c-input-group > .pf-v5-c-button.pf-m-control::after,
+.pf-v5-c-input-group > button[data-password-toggle]::before,
+.pf-v5-c-input-group > button[data-password-toggle]::after {
+  display: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  content: none !important;
+}
+
 .pf-v5-c-input-group > .pf-v5-c-button.pf-m-control:hover,
 .pf-v5-c-input-group > button[data-password-toggle]:hover {
-  background: rgba(255, 255, 255, 0.075) !important;
+  background: var(--botelho-card-hover) !important;
   color: #fff !important;
 }
 
@@ -341,8 +394,8 @@ input.pf-v5-c-form-control:focus,
 select.pf-v5-c-form-control:focus,
 textarea.pf-v5-c-form-control:focus,
 .pf-v5-c-input-group:focus-within {
-  border-color: var(--botelho-primary) !important;
-  box-shadow: 0 0 0 3px rgba(22, 132, 255, 0.17), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  border-color: var(--botelho-input-focus-border) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035) !important;
 }
 
 #kc-form-options {
@@ -679,12 +732,14 @@ html[data-botelho-resolved-theme="light"] {
   --botelho-muted: #5e6d7f;
   --botelho-placeholder: #8190a1;
   --botelho-shadow: 0 30px 90px rgba(0, 8, 24, 0.44);
+  --botelho-input-focus-border: #9ab0c7;
 }
 
 html[data-botelho-resolved-theme="light"] .pf-v5-c-login__main,
 html[data-botelho-resolved-theme="light"] .pf-c-login__main {
   border-color: rgba(202, 214, 227, 0.96) !important;
   border-top: 0 !important;
+  border-top-color: transparent !important;
   background: rgba(255, 255, 255, 0.985) !important;
 }
 

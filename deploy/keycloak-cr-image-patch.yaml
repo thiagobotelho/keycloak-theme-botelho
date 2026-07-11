@@ -1,2 +1,2 @@
 spec:
-  image: registry.example.com/identity/rhbk:26.6-botelho-1.2.4
+  image: registry.example.com/identity/rhbk:26.6-botelho-1.2.5

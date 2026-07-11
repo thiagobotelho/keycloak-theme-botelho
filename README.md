@@ -1,11 +1,13 @@
-# Botelho Identity Theme 1.2.4 — RHBK 26.6
+# Botelho Identity Theme 1.2.5 — RHBK 26.6
 
 Tema corporativo dark-first para **Red Hat build of Keycloak 26.6**, cobrindo Login e Admin Console sem substituir a aplicação React nativa nem os fluxos de autenticação do produto.
 
-## Correções da versão 1.2.4
+## Correções da versão 1.2.5
 
-- Remove a linha superior do cartão de login e renomeia os assets CSS/JS para
-  evitar cache visual antigo no navegador.
+- Remove a linha superior remanescente do cartão de login mesmo quando o
+  PatternFly recarrega estilos depois do tema.
+- Suaviza o estado de foco dos campos e harmoniza o botão de visibilidade de
+  senha com o restante do input.
 - Melhora a apresentação das ações nativas do Keycloak:
   recuperação de senha, cadastro quando habilitado, lembrar de mim e provedores
   de identidade.
@@ -59,7 +61,7 @@ gerar o mesmo archive `.jar`, suficiente para distribuição de tema Keycloak.
 Artefato gerado:
 
 ```text
-target/rhbk-theme-botelho-1.2.4.jar
+target/rhbk-theme-botelho-1.2.5.jar
 ```
 
 Também é possível usar:
@@ -71,7 +73,7 @@ mvn clean package
 ## Deploy direto
 
 ```bash
-cp target/rhbk-theme-botelho-1.2.4.jar \
+cp target/rhbk-theme-botelho-1.2.5.jar \
   /opt/keycloak/providers/rhbk-theme-botelho.jar
 
 rm -rf /opt/keycloak/data/tmp/kc-gzip-cache
@@ -105,7 +107,7 @@ A estratégia recomendada é gerar uma imagem imutável com o JAR incorporado:
 podman build \
   --build-arg RHBK_IMAGE=<imagem-rhbk-26.6-homologada> \
   -f deploy/Containerfile.example \
-  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.4 .
+  -t registry.example.com/identity/rhbk:26.6-botelho-1.2.5 .
 ```
 
 Arquivos de apoio:
@@ -151,7 +153,7 @@ Manual detalhado: [docs/RECURSOS-DE-LOGIN.md](docs/RECURSOS-DE-LOGIN.md).
 
 ## Personalização
 
-- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.4.css`
+- Login: `src/main/resources/theme/botelho/login/resources/css/brand-1.2.5.css`
 - Admin: `src/main/resources/theme/botelho/admin/resources/css/admin-1.2.3.css`
 - Logo: `src/main/resources/theme/botelho/*/resources/img/botelho-identity-logo.svg`
 - Fundo: `src/main/resources/theme/botelho/login/resources/img/identity-wave.svg`
