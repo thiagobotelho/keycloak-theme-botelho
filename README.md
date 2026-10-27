@@ -158,3 +158,7 @@ Manual detalhado: [docs/RECURSOS-DE-LOGIN.md](docs/RECURSOS-DE-LOGIN.md).
 - Logo: `src/main/resources/theme/botelho/*/resources/img/botelho-identity-logo.svg`
 - Fundo: `src/main/resources/theme/botelho/login/resources/img/identity-wave.svg`
 - Textos: `src/main/resources/theme/botelho/login/messages/`
+
+## Aprender a configuração
+
+Consulte o [guia comentado](docs/APRENDIZADO.md) para entender componentes, escolhas, testes positivos/negativos e reversão.
